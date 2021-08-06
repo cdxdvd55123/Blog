@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-<title>Bolin-Blog</title>
+<title>2021-08-06 CSS-transition、filter、box-shadow | Bolin-Blog</title>
 
 
-<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="../../../../styles/main.css">
 
 
     <meta name="generator" content="Hexo 5.4.0"></head>
@@ -23,15 +23,15 @@
     <ul id="menu" class="menu">
     
         <li class="menu-item text-underline">
-            <a href="index.html">Home</a>
+            <a href="../../../../index.html">Home</a>
         </li>
     
         <li class="menu-item text-underline">
-            <a href="archives">Archives</a>
+            <a href="../../../../archives">Archives</a>
         </li>
     
         <li class="menu-item text-underline">
-            <a href="about">About</a>
+            <a href="../../../../about">About</a>
         </li>
             
     </ul>
@@ -40,16 +40,14 @@
 </header>
             <main class="main">
                 <section class="posts clearfix">
-    <div class="posts-wrapper">
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="2021/08/06/transition/">2021-08-06 CSS-transition、filter、box-shadow</a>
-            </div>
-            <p class="sub">Aug 06 2021</p>
-            <div class="post-content">
-                
-                    <p>今天複習 CSS 的 transion . filter . box-shadow 用法：</p>
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        2021-08-06 CSS-transition、filter、box-shadow
+    </div>
+    <p class="sub">Aug 06 2021</p>
+    <div class="post-content">
+        <p>今天複習 CSS 的 transion . filter . box-shadow 用法：</p>
 <h3 id="transition-套用的屬性-花費時間-時間速率-等待時間"><a href="#transition-套用的屬性-花費時間-時間速率-等待時間" class="headerlink" title="transition: 套用的屬性 花費時間  時間速率 等待時間 ;"></a><strong><font color=#800000>transition: 套用的屬性 花費時間  時間速率 等待時間 ;</font></strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">transition: all 2s ease-out 1s;</span><br><span class="line">等同於：</span><br><span class="line">transition-property: all; </span><br><span class="line">transition-duration: 2s;  </span><br><span class="line">transition-timing-function: ease-out;</span><br><span class="line">transition-delay: 1s; </span><br></pre></td></tr></table></figure>
 <p><strong>transition-property：</strong><br>定義哪些 CSS properties 會被轉場效果影響。除了被特別指出的 property ，其他的轉場一如以往會瞬間完成。</p>
 <p><strong>transition-duration：</strong><br>定義轉場所花費的時間。可以只定義一個時間給所有 property ，也可以給定多組不同時間。</p>
@@ -67,60 +65,45 @@
 <p>grayscale   灰階<br>sepia       懷舊<br>saturate    飽和<br>hue-rotate  色相旋轉<br>invert      負片<br>opacity     不透明<br>brightness  亮度<br>contras     對比<br>blur        模糊<br>drop-shadow 下拉陰影</p>
 <h3 id="box-shadow-h-shadow-v-shadow-blur-spread-color-inset"><a href="#box-shadow-h-shadow-v-shadow-blur-spread-color-inset" class="headerlink" title="box-shadow: h-shadow v-shadow blur spread color inset; "></a><strong><font color=#800000>box-shadow: h-shadow v-shadow blur spread color inset; </font></strong></h3><p>h-shadow：水平位移距離<br>v-shadow：垂直位移距離<br>blur：    模糊半徑<br>spread：  擴散距離<br>color：   顏色<br>inset：   內陰影(原本設定在區塊外的陰影變成在內部)<br>至少要提供 h-shadow 、 v-shadow 參數。</p>
 
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="2021/08/05/hello-world/">第一篇文章(測試)</a>
-            </div>
-            <p class="sub">Aug 05 2021</p>
-            <div class="post-content">
-                
-                    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-                
-            </div>
-        </article>
-    
-</div>
-<div class="side-bar">
-
-
-    <div class="avator" id="avator">
-    <div class="title">
-        <a href="#" class="text-underline">About Me</a>
     </div>
-        <img src="photo.jpg" class="ava-img">
-        <h3 class="author">Bolin Huang</h3>
-        <div class="icon-list">
-        <a href=""><i class="iconfont icon-weibo icon-item"></i></a>
-        <a href="mailto:cdxdvd55123@gmail.com"><i class="iconfont icon-email icon-item"></i></a>
-        <a target="_blank" rel="noopener" href="https://github.com/cdxdvd55123"><i class="iconfont icon-github icon-item"></i></a>
-        <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/bolin-huang-705351210"><i class="iconfont icon-linkedin icon-item"></i></a>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#transition-%E5%A5%97%E7%94%A8%E7%9A%84%E5%B1%AC%E6%80%A7-%E8%8A%B1%E8%B2%BB%E6%99%82%E9%96%93-%E6%99%82%E9%96%93%E9%80%9F%E7%8E%87-%E7%AD%89%E5%BE%85%E6%99%82%E9%96%93"><span class="toc-text">transition: 套用的屬性 花費時間  時間速率 等待時間 ;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#filter-%E6%BF%BE%E9%8F%A1-CSS-%E5%B1%AC%E6%80%A7%E5%B0%87%E6%A8%A1%E7%B3%8A%E6%88%96%E9%A1%8F%E8%89%B2%E5%81%8F%E7%A7%BB%E7%AD%89%E5%9C%96%E5%BD%A2%E6%95%88%E6%9E%9C%E6%87%89%E7%94%A8%E6%96%BC%E5%85%83%E7%B4%A0%E3%80%82%E6%BF%BE%E9%8F%A1%E9%80%9A%E5%B8%B8%E7%94%A8%E6%96%BC%E8%AA%BF%E6%95%B4%E5%9C%96%E5%83%8F%E3%80%81%E8%83%8C%E6%99%AF%E5%92%8C%E9%82%8A%E6%A1%86%E7%9A%84%E6%B8%B2%E6%9F%93%E3%80%82"><span class="toc-text">filter 濾鏡: CSS 屬性將模糊或顏色偏移等圖形效果應用於元素。
+濾鏡通常用於調整圖像、背景和邊框的渲染。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#box-shadow-h-shadow-v-shadow-blur-spread-color-inset"><span class="toc-text">box-shadow: h-shadow v-shadow blur spread color inset; </span></a></li></ol>
         </div>
-    <div class="tags">
-    <h3 class="tags-title">Tags</h3>
-    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="tags/css/" rel="tag">css</a><span class="tag-list-count">1</span></li></ul>
-</div>
     </div>
-</div>
 
 </section>
 
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+                    <a href="../../../../tags/css/">css</a>
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+        
+            <a class="next" href="../../05/hello-world/">
+                
+                <span class="prev-text">第一篇文章(測試)</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
 
 
             </main>
@@ -137,13 +120,13 @@
         
     </body>
     
-<script src="js/jquery-3.3.1.min.js"></script>
+<script src="../../../../js/jquery-3.3.1.min.js"></script>
 
     
-<script src="js/back-to-top.js"></script>
+<script src="../../../../js/back-to-top.js"></script>
 
     
-<script src="js/scroll.js"></script>
+<script src="../../../../js/scroll.js"></script>
 
     <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
 <script type="text/x-mathjax-config">
