@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>Node.js、npm | Bolin-Blog</title>
+
+
+<link rel="stylesheet" href="../../../../styles/main.css">
+
+
+    <meta name="generator" content="Hexo 5.4.0"></head>
+    <body>
+        <div class="container">
+            <header>
+<div class="main">
+<div class="title">
+    <a href="#" class="logo">Bolin-Blog</a>
+</div>
+<div class="site-nav">
+    <ul id="menu" class="menu">
+    
+        <li class="menu-item text-underline">
+            <a href="../../../../index.html">Home</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="../../../../archives">Archives</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="../../../../about">About</a>
+        </li>
+            
+    </ul>
+</div>
+</div>
+</header>
+            <main class="main">
+                <section class="posts clearfix">
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        Node.js、npm
+    </div>
+    <p class="sub">Aug 14 2021</p>
+    <div class="post-content">
+        <p>因為在練習串接 API 時，發現需要用到 Node.js，因此針對這個部分做學習。</p>
+<h1 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a><font color=#800000>Node.js</font></h1><p>Node.js是能夠執行 JavaScript 的一個運行環境，「瀏覽器」是一個能夠運行 JavaScript 的運行環境，在 Node.js 出現以前 JavaScript 「只能」在瀏覽器上運行。<br>所以 Node.js能讓 JavaScript 跑在瀏覽器以外（例如：電腦）。可以在終端機內輸入 JavaScript 語法並且運行。</p>
+<h3 id="瀏覽器與-Node-js-兩者在運行-JavaScript-上的差異"><a href="#瀏覽器與-Node-js-兩者在運行-JavaScript-上的差異" class="headerlink" title="瀏覽器與 Node.js 兩者在運行 JavaScript 上的差異"></a>瀏覽器與 Node.js 兩者在運行 JavaScript 上的差異</h3><p>瀏覽器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">提供 JavaScript 一些操作瀏覽器上元素的方法，只有在瀏覽器上才能使用。</span><br><span class="line">例如： document 相關的方法</span><br><span class="line">      內建的對話視窗 alert(), promote(), confirm()</span><br><span class="line">      request 會有某些限制規範。</span><br></pre></td></tr></table></figure>
+<p>Node.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">提供 JavaScript 一些操作電腦東西的方法，只有使用 Node.js 才能使用。</span><br><span class="line">例如： FS (file system) 相關方法</span><br><span class="line">      request 可以直接發送到 server</span><br><span class="line">      module.exports 和 require。</span><br></pre></td></tr></table></figure>
+
+<h1 id="npm-Node-Package-Manager"><a href="#npm-Node-Package-Manager" class="headerlink" title="npm (Node Package Manager)"></a><font color=#800000>npm (Node Package Manager)</font></h1><p>npm 是一個 node.js 的套件管理工具。<br>好處在於：<br>1.統一管理函式庫（更新、下載、刪除）。<br>2.可以使用別人寫好的函式庫（程式）。</p>
+<h3 id="npm-init"><a href="#npm-init" class="headerlink" title="npm init"></a>npm init</h3><p>如果想要在一個 Project 裡面使用 npm ，需要先使用一個指令 npm init<br>在打入 npm init 後，會被要求輸入幾個欄位</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package name: Project 名字</span><br><span class="line">version:  Project 版本</span><br><span class="line">description: Project 基本介紹</span><br><span class="line">entry point: 進入點，要跑 Project 應該要執行哪個檔案</span><br><span class="line">author: 作者(自己)</span><br><span class="line">license: Project 採用什麼授權的</span><br><span class="line">test command: 這個不太重要，待會會說明</span><br></pre></td></tr></table></figure>
+<p>基本上結束後，可以看到這個資料夾底下，新增了一個 Package.json，<br>如果覺得上面要一直輸入很冗長，可以使用 npm init -y ，<br>跟 npm init 幾乎一樣，只是會幫你把預設選項全部跳過，產生一個空白的 package.json 。</p>
+<h3 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h3><p>要新增 selenium 的方法很簡單，先搜尋 npm selenium ，就可以找到已經被發佈在 NPM 上的 selenium，<br>而指令也很簡單，npm install selenium-webdriver，<br>接下來會要等一段時間(NPM 會從官方的資料庫去撈函式庫的資料)，<br>安裝完可以看到現有的資料夾裡面新增了兩個檔案，<br>node_modules 和 package-lock.json。<br>指令除了創建了 node_modules，新增整個 selenium-webdriver 的原始碼，<br>還附加了許多資料夾，因為 Selenium 本身會需要引入其他函式庫才能使用，<br>所以會自動幫你都裝好。</p>
+<h3 id="npm-建立的檔案與資料夾"><a href="#npm-建立的檔案與資料夾" class="headerlink" title="npm 建立的檔案與資料夾"></a>npm 建立的檔案與資料夾</h3><p>node_modules：<br>每個專案要使用的函式庫，<br>都直接安裝在專案的資料夾底下，<br>保持每個環境(資料夾)，永遠都不會有相衝突的機會。</p>
+<p>package.json：<br>用來紀錄專案資訊，所以也包含了函式庫資訊，<br>別人也可以透過這個檔案去知道使用了哪些函式庫並下載安裝。<br>之後想把 Project 放到另一個環境時，<br>只需要複製原始碼，和 package.json，<br>之後執行 npm install，如果後面不加套件名稱的話，<br>npm 會當作是你想把 package.json 上現在缺的 Dependency 都裝回來。</p>
+<p>package-lock.json：<br>npm install 會照著 package.json 函式庫資訊進行安裝，<br>而 package.json 函式庫資訊定義了向後（新）兼容依賴，<br>若有人在 git hub 上 clone 了專案並運行  npm install ，<br>可能會得到與原專案不同的函式庫版本，<br>這時候 package-lock.json 就起了很大的作用，<br>可以根據這個檔案查看當時開發者所使用的版本去下載函式庫，<br>才不會造成 bug 產生。<br>每次 npm install / uninstall /update 都會更新。</p>
+
+    </div>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Node-js"><span class="toc-text">Node.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%80%8F%E8%A6%BD%E5%99%A8%E8%88%87-Node-js-%E5%85%A9%E8%80%85%E5%9C%A8%E9%81%8B%E8%A1%8C-JavaScript-%E4%B8%8A%E7%9A%84%E5%B7%AE%E7%95%B0"><span class="toc-text">瀏覽器與 Node.js 兩者在運行 JavaScript 上的差異</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#npm-Node-Package-Manager"><span class="toc-text">npm (Node Package Manager)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#npm-init"><span class="toc-text">npm init</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm-install"><span class="toc-text">npm install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#npm-%E5%BB%BA%E7%AB%8B%E7%9A%84%E6%AA%94%E6%A1%88%E8%88%87%E8%B3%87%E6%96%99%E5%A4%BE"><span class="toc-text">npm 建立的檔案與資料夾</span></a></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+
+</section>
+
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+        
+            <a class="next" href="../../07/2021-08-07%20CSS-preprocessor/">
+                
+                <span class="prev-text">2021-08-07 CSS-preprocessor(預處理器)</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
+
+
+            </main>
+            <div class="copyright">
+  <div class="text">Powered By
+    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
+  </div>
+</div>
+
+        </div>
+    <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+    </div>
+        
+    </body>
+    
+<script src="../../../../js/jquery-3.3.1.min.js"></script>
+
+    
+<script src="../../../../js/back-to-top.js"></script>
+
+    
+<script src="../../../../js/scroll.js"></script>
+
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</html>
