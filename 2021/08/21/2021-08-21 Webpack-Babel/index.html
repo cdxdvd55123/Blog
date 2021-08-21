@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>2021-08-21 Webpack-module | Bolin-Blog</title>
+
+
+<link rel="stylesheet" href="../../../../styles/main.css">
+
+
+    <meta name="generator" content="Hexo 5.4.0"></head>
+    <body>
+        <div class="container">
+            <header>
+<div class="main">
+<div class="title">
+    <a href="#" class="logo">Bolin-Blog</a>
+</div>
+<div class="site-nav">
+    <ul id="menu" class="menu">
+    
+        <li class="menu-item text-underline">
+            <a href="../../../../index.html">Home</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="../../../../archives">Archives</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="../../../../about">About</a>
+        </li>
+            
+    </ul>
+</div>
+</div>
+</header>
+            <main class="main">
+                <section class="posts clearfix">
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        2021-08-21 Webpack-module
+    </div>
+    <p class="sub">Aug 21 2021</p>
+    <div class="post-content">
+        <h1 id="Babel"><a href="#Babel" class="headerlink" title=" Babel"></a><strong><font color=#800000> Babel</font></strong></h1><p>在開發的過程中，通常會使用到 ES6 以上的語法，<br>這時候就需要 Babel 將我們的 js 檔編譯為瀏覽器可運行的版本，<br>接下來要將 Babel 引入到我們的專案中。<br>用 npm 來安裝 babel 相關的 module 和 loader：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @babel/core babel-loader @babel/preset-env</span><br></pre></td></tr></table></figure>
+<p>在專案的根目錄新增一個 <font color=#FF6600>.babelrc</font> 設定檔：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;presets&quot;: [&quot;@babel/preset-env&quot;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著修改 <font color=#FF6600>webpack.config.js</font>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">        //所有.js 檔都會用 Babel 編譯</span><br><span class="line">        &#123;</span><br><span class="line">            test: /\.js$/i,</span><br><span class="line">            exclude: /node_modules/,</span><br><span class="line">            use: [&#x27;babel-loader&#x27;]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="CSS、SCSS"><a href="#CSS、SCSS" class="headerlink" title=" CSS、SCSS"></a><strong><font color=#800000> CSS、SCSS</font></strong></h1><p>之前也提到過的 CSS 預處理器，接下來就來引入最普遍使用的 Sass/SCSS<br>以及 CSS module。<br>用 npm 來安裝 SCSS 和 CSS 相關的套件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev css-loader style-loader</span><br><span class="line">npm install --save-dev sass-loader dart-sass</span><br></pre></td></tr></table></figure>
+<p>修改 <font color=#FF6600>webpack.config.js</font>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">        &#123;</span><br><span class="line">            test: /\.js$/i,</span><br><span class="line">            exclude: /node_modules/,</span><br><span class="line">            use: [&#x27;babel-loader&#x27;]</span><br><span class="line">        &#125;,</span><br><span class="line">        //用 css loader 來處理 css 檔案</span><br><span class="line">        &#123;</span><br><span class="line">          test: /\.css$/i,</span><br><span class="line">          use: [&#x27;style-loader&#x27;, &#x27;css-loader&#x27;]</span><br><span class="line">        &#125;,</span><br><span class="line">        //用 sass loader 來處理 sass 或 scss 檔案</span><br><span class="line">        &#123;</span><br><span class="line">          test: /\.s[ac]ss$/i,</span><br><span class="line">          use: [&#x27;style-loader&#x27;, &#x27;css-loader&#x27;, &#x27;sass-loader&#x27;]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 Webpack 中 loader 的順序是從後到前，舉個例子：<br>Webpack 會先用 sass loader 處理 sass 檔(將 sass 檔編譯成 css 檔)，<br>再用 css loader(將 css 檔編譯成 js 檔)，<br>最後則是 style loader (在 DOM 元件插入 style 標籤，再置入 css 樣式)，<br>因此順序不能更改，否則會出錯。<br>再來在 bundle 的進入點引入 css 檔或 scss 檔：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//index.js</span><br><span class="line">import &#x27;./css/style.scss&#x27;;</span><br></pre></td></tr></table></figure>
+<h1 id="mini-css-extract-plugin"><a href="#mini-css-extract-plugin" class="headerlink" title=" mini-css-extract-plugin"></a><strong><font color=#800000> mini-css-extract-plugin</font></strong></h1><p>mini-css-extract-plugin 可以幫我們壓縮 css 檔，並另外獨立出來。<br>安裝指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev mini-css-extract-plugin</span><br></pre></td></tr></table></figure>
+<p>接著修改 <font color=#FF6600>webpack.config.js</font>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">const MiniCssExtractPlugin = require(&#x27;mini-css-extract-plugin&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  ...</span><br><span class="line">  plugins: [new MiniCssExtractPlugin(&#123;</span><br><span class="line">    filename: &#x27;static/css/[name].[hash].css&#x27;,</span><br><span class="line">  &#125;)],</span><br><span class="line">  module: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">        &#123;</span><br><span class="line">            test: /\.js$/,</span><br><span class="line">            exclude: /node_modules/,</span><br><span class="line">            use: [&#x27;babel-loader&#x27;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          test: /\.css$/i,</span><br><span class="line">          use: [&#123;</span><br><span class="line">            loader: MiniCssExtractPlugin.loader,</span><br><span class="line">          &#125;, &#x27;css-loader&#x27;]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          test: /\.s[ac]ss$/i,</span><br><span class="line">          use: [&#123;</span><br><span class="line">            loader: MiniCssExtractPlugin.loader,</span><br><span class="line">          &#125;, &#x27;css-loader&#x27;, &#x27;sass-loader&#x27;]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="HtmlWebpackPlugin"><a href="#HtmlWebpackPlugin" class="headerlink" title=" HtmlWebpackPlugin"></a><strong><font color=#800000> HtmlWebpackPlugin</font></strong></h1><p>HtmlWebpackPlugin 可以自動幫我們引入靜態檔案，而不用手動引入。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin</span><br></pre></td></tr></table></figure>
+<p>修改 <font color=#FF6600>webpack.config.js</font>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const HtmlWebpackPlugin = require(&#x27;html-webpack-plugin&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    new HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: &#x27;./src/index.html&#x27;,</span><br><span class="line">      //使用 src 裡面的 index.html 作為模板</span><br><span class="line">      filename: &#x27;index.html&#x27;,</span><br><span class="line">      //處理完後的檔案名稱</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br></pre></td></tr></table></figure>
+<p>執行完 npm run build 後，就會在 dist 生成一個 index.html，<br>自動引入 css 檔和 js 檔。</p>
+<h1 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title=" webpack-dev-server"></a><strong><font color=#800000> webpack-dev-server</font></strong></h1><p>使用 webpack dev server的 hot reload 功能，<br>可以幫助你每次存檔時自動執行 Webpack，<br>不用自己執行 Webpack 指令。<br>安裝指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev webpack-dev-server</span><br></pre></td></tr></table></figure>
+<p>修改 <font color=#FF6600>package.json</font>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;webpack --mode production&quot;,</span><br><span class="line">    &quot;dev&quot;: &quot;webpack --mode development&quot;,</span><br><span class="line">    &quot;start&quot;: &quot;webpack-dev-server --mode development --open --hot&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p>執行 npm run start，webpack dev server 就會在你每次存檔時，<br>自動幫你執行 Webpack 指令。</p>
+
+    </div>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Babel"><span class="toc-text"> Babel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS%E3%80%81SCSS"><span class="toc-text"> CSS、SCSS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mini-css-extract-plugin"><span class="toc-text"> mini-css-extract-plugin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HtmlWebpackPlugin"><span class="toc-text"> HtmlWebpackPlugin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#webpack-dev-server"><span class="toc-text"> webpack-dev-server</span></a></li></ol>
+        </div>
+    </div>
+
+</section>
+
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+                    <a href="../../../../tags/Webpack/">Webpack</a>
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+        
+            <a class="next" href="../../19/2021-08-19%20Webpack%20%E4%BD%BF%E7%94%A8/">
+                
+                <span class="prev-text">2021-08-19 Webpack 使用</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
+
+
+            </main>
+            <div class="copyright">
+  <div class="text">Powered By
+    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
+  </div>
+</div>
+
+        </div>
+    <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+    </div>
+        
+    </body>
+    
+<script src="../../../../js/jquery-3.3.1.min.js"></script>
+
+    
+<script src="../../../../js/back-to-top.js"></script>
+
+    
+<script src="../../../../js/scroll.js"></script>
+
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</html>

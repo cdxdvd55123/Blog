@@ -58,10 +58,11 @@
 <h1 id="Webpack-基本配置"><a href="#Webpack-基本配置" class="headerlink" title=" Webpack 基本配置"></a><strong><font color=#800000> Webpack 基本配置</font></strong></h1><p>初始專案結構：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">webpack-demo/</span><br><span class="line">│</span><br><span class="line">├─── node_modules/</span><br><span class="line">│</span><br><span class="line">├─── src/</span><br><span class="line">│   │</span><br><span class="line">│   └─── index.js          # entry 入口檔案</span><br><span class="line">│</span><br><span class="line">├─── webpack.config.js    # Webpack 配置檔案</span><br><span class="line">├─── package-lock.json</span><br><span class="line">└─── package.json         # 已安裝 webpack、webpack-cli</span><br></pre></td></tr></table></figure>
 <p>安裝完畢後，在主目錄建立 webpack.config.js 進行初始化的設置。<br>進入webpack.config.js 做以下設定：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  <span class="comment">//改為&#x27;production&#x27;則會自動壓縮檔案</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;./src/index.js&quot;</span>, </span><br><span class="line">  <span class="comment">//代表專案的進入點，也就是放在 src 路徑下的 index.js。</span></span><br><span class="line">  <span class="attr">output</span>: &#123; <span class="comment">//打包輸出後的檔案</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;index.bundle.js&quot;</span>, </span><br><span class="line">    <span class="comment">//打包後的 JavaScript 檔案名稱</span></span><br><span class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="comment">//設定打包後的檔案放置路徑，通常都會搭配 path 模組以形成絕對路徑</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"> </span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="attr">mode</span>: <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  <span class="comment">//改為&#x27;production&#x27;則會自動壓縮檔案</span></span><br><span class="line">  <span class="attr">entry</span>: <span class="string">&quot;.src/index.js&quot;</span>, </span><br><span class="line">  <span class="comment">//代表專案的進入點，也就是放在 src 路徑下的 index.js。</span></span><br><span class="line">  <span class="attr">output</span>: &#123; <span class="comment">//打包輸出後的檔案</span></span><br><span class="line">    <span class="attr">filename</span>: <span class="string">&quot;index.bundle.js&quot;</span>, </span><br><span class="line">    <span class="comment">//打包後的 JavaScript 檔案名稱</span></span><br><span class="line">    <span class="attr">path</span>: path.resolve(__dirname, <span class="string">&quot;dist&quot;</span>),</span><br><span class="line">    <span class="comment">//設定打包後的檔案放置路徑，通常都會搭配 path 模組以形成絕對路徑</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>修改 package.json 以便快速執行指令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,</span><br><span class="line">    &quot;build&quot;: &quot;webpack --mode production&quot;,</span><br><span class="line">    &quot;dev&quot;: &quot;webpack --mode development&quot;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <p>執行編譯指令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 <p>今天就先寫一些基本的東西，之後搭配其他套件使用會再額外寫文章。</p>
 
     </div>
@@ -84,6 +85,8 @@
         
             <div class="page-tags">
                 
+                    <a href="../../../../tags/Webpack/">Webpack</a>
+                
             </div>
         
     </nav>
@@ -91,6 +94,11 @@
 
 
     <nav class="paginator clearfix">
+        
+            <a class="prev" href="../../21/2021-08-21%20Webpack-Babel/">
+                <i class="iconfont icon-left"></i>
+                <span class="prev-text">2021-08-21 Webpack-module</span>
+            </a>
         
         
             <a class="next" href="../../15/2021-08-15%20Request%20&%20Response/">
